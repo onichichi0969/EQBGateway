@@ -1,0 +1,42 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.7.34202.233
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Microservices", "Microservices", "{C4F14100-44F3-4A5A-B2B1-F1EAB00DF563}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Gateway.API", "Gateway.API\Gateway.API.csproj", "{DCAFEC5F-3AB6-415F-8B1E-B8691316E28A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BalanceInquiry.API", "BalanceInquiry.API\BalanceInquiry.API.csproj", "{11EA6097-5C93-4A18-A4AF-97A24E7E8449}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EQBAuth.API", "EQBAuth.API\EQBAuth.API.csproj", "{536D5180-E584-483F-BB2C-72FC606D9A74}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{DCAFEC5F-3AB6-415F-8B1E-B8691316E28A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{DCAFEC5F-3AB6-415F-8B1E-B8691316E28A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{DCAFEC5F-3AB6-415F-8B1E-B8691316E28A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{DCAFEC5F-3AB6-415F-8B1E-B8691316E28A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{11EA6097-5C93-4A18-A4AF-97A24E7E8449}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{11EA6097-5C93-4A18-A4AF-97A24E7E8449}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{11EA6097-5C93-4A18-A4AF-97A24E7E8449}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{11EA6097-5C93-4A18-A4AF-97A24E7E8449}.Release|Any CPU.Build.0 = Release|Any CPU
+		{536D5180-E584-483F-BB2C-72FC606D9A74}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{536D5180-E584-483F-BB2C-72FC606D9A74}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{536D5180-E584-483F-BB2C-72FC606D9A74}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{536D5180-E584-483F-BB2C-72FC606D9A74}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{11EA6097-5C93-4A18-A4AF-97A24E7E8449} = {C4F14100-44F3-4A5A-B2B1-F1EAB00DF563}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {6D21AF87-7985-4F44-9714-969F5234900D}
+	EndGlobalSection
+EndGlobal

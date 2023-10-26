@@ -1,0 +1,63 @@
+{
+  "GlobalConfiguration": {
+    "BaseUrl": "https://localhost:44382"
+  },
+  "Routes": [
+    {
+      "DownstreamPathTemplate": "/api/BalanceInquiry/GetBalanceInquire",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5275
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/gateway/BalanceInquiry/GetBalanceInquire",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/api/BalanceInquiry/BalanceInquire",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 5275
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/gateway/BalanceInquiry/BalanceInquire",
+      "UpstreamHttpMethod": [ "POST" ]
+    },
+    {
+      "DownstreamPathTemplate": "/EtapiEnq.container/api/v1.0.0/party/etapi/act/bal/{id}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ], 
+      "UpstreamPathTemplate": "/gateway/v1.0.0/party/etapi/act/bal/{id}",
+      "UpstreamHttpMethod": [ "GET" ]
+    },
+    {
+      "DownstreamPathTemplate": "/EQBEtapi.container/api/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ], 
+      "UpstreamPathTemplate": "/gateway/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
+      "UpstreamHttpMethod": [ "POST" ]
+    }
+  ]
+}
