@@ -37,7 +37,7 @@ namespace Gateway.API
 
             //services.AddOcelot(Configuration)
             services.AddOcelot()
-                .AddDelegatingHandler<HeaderDelegatingHandler>(true); 
+                .AddDelegatingHandler<HeaderDelegatingHandler>(true);
             services.AddControllers();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
               .AddJwtBearer(options =>
@@ -50,6 +50,7 @@ namespace Gateway.API
                       ValidateIssuerSigningKey = true,
                       ValidIssuer = Configuration["JWT:Issuer"],
                       ValidAudience = Configuration["JWT:Audience"],
+                      ClockSkew = TimeSpan.Zero,
                       IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(Configuration["JWT:SecretKey"]))
 
                   };
@@ -71,7 +72,8 @@ namespace Gateway.API
 
             app.UseHttpsRedirection();
 
-         
+            app.UseMiddleware<RequestResponseLoggingMiddleware>();
+
             app.UseRouting();
 
             app.UseOcelot();

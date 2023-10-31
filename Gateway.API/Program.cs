@@ -9,6 +9,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Ocelot.DependencyInjection;
+using Serilog;
+using Serilog.Events;
 
 namespace BalanceInquiry.Micorservice
 {
@@ -17,7 +19,7 @@ namespace BalanceInquiry.Micorservice
 
         public static void Main(string[] args)
         {
-            CreateHostBuilder(args).Build().Run(); 
+            CreateHostBuilder(args).Build().Run();
         }
 
         public static IHostBuilder CreateHostBuilder(string[] args) =>
@@ -29,6 +31,13 @@ namespace BalanceInquiry.Micorservice
                 }).ConfigureAppConfiguration((host, config) =>
                 {
                     config.AddJsonFile("ocelot.json");
+                }).UseSerilog((_, config) =>
+                {
+                    config
+                        .MinimumLevel.Information()
+                        .MinimumLevel.Override("Microsoft", LogEventLevel.Warning)
+                        .Enrich.FromLogContext()
+                        .WriteTo.File(@"Logs\log.txt", rollingInterval: RollingInterval.Day);
                 });
     }
 }

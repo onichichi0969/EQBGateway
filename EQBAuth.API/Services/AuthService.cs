@@ -29,7 +29,9 @@ namespace EQBAuth.API.Services
                 issuer: _configuration["JWT:Issuer"],
                 audience: _configuration["JWT:Audience"],
                 claims,
-                expires: DateTime.Now.AddDays(1),
+                //expires: DateTime.Now.AddMinutes(1),
+                expires:DateTime.Now.AddHours(24),
+
                 signingCredentials: credentials);
 
             return await Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
