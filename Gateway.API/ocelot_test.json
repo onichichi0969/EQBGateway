@@ -17,7 +17,14 @@
         "AllowedScopes": []
       },
       "UpstreamPathTemplate": "/gateway/BalanceInquiry/GetBalanceInquire",
-      "UpstreamHttpMethod": [ "GET" ]
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
     },
     {
       "DownstreamPathTemplate": "/api/BalanceInquiry/BalanceInquire",
@@ -44,10 +51,6 @@
           "Port": 9189
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      },
       "UpstreamPathTemplate": "/gateway/v1.0.0/party/etapi/act/bal/{id}",
       "UpstreamHttpMethod": [ "GET" ]
     },
@@ -60,10 +63,6 @@
           "Port": 9189
         }
       ],
-      "AuthenticationOptions": {
-        "AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      },
       "UpstreamPathTemplate": "/gateway/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
       "UpstreamHttpMethod": [ "POST" ]
     }

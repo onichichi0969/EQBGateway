@@ -4,6 +4,475 @@
   },
   "Routes": [
     {
+      "_comment": "[InstaPay Interface] Instapay Transaction",
+      "DownstreamPathTemplate": "/Instapay.container/api/v1.0.0/party/createIpFundsTransfer/payments/instapays",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Instapay/Instapays",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[InstaPay Interface] Instapay Reversal Transaction",
+      "DownstreamPathTemplate": "/Instapay.container/api/v1.0.0/party/reverseFundsTransfer/payments/rev/{ID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Instapay/Reversal",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] ACA - Auto Credit Transaction",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfAcaFundsTransfer/payments/dpf/aca",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/ACA",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] Adjustment Facility",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfAdjFacFundsTransfer/payments/dpf/adj/fac",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/Adjustment",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] CT Non Remittance",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfCtnrFundsTransfer/payments/dpf/ctnr",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/CTNR",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] Doctors Credit Transaction",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfDcFundsTransfer/payments/dpf/dc",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/DC",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] Managers Cheque Transaction",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfMcFundsTransfer/payments/dpf/mc",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/MC",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] Pesonet Transaction",
+      "DownstreamPathTemplate": "/Disbursement.container/api/v1.0.0/party/createDpfPesonetFundsTransfer/payments/dpf/pesonet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/Pesonet",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[Disbursement Payment Facilty Interface] Reversal Transaction",
+      "DownstreamPathTemplate": "/Instapay.container/api/v1.0.0/party/reverseFundsTransfer/payments/rev/{ID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/Disbursement/Reversal",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] InstaPay Transaction",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtIpFundsTransfer/payments/et/ip",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/Instapay",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Pesonet Transaction",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtPesonetFundsTransfer/payments/et/pesonet",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/Pesonet",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Pesonet for Loans Transcation",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtPesonetlFundsTransfer/payments/et/pesonetl",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/PesonetLoan",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] GL entries for CDV",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtGlpreFundsTransfer/payments/et/glpre",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/GL",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Intrafund Transaction",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtIntraFundsTransfer/payments/et/intra",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/Intra",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Reversal Transaction",
+      "DownstreamPathTemplate": "/Instapay.container/api/v1.0.0/party/reverseFundsTransfer/payments/rev/{ID}",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/Reversal",
+      "UpstreamHttpMethod": [ "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Bills Payment, Loan Payment, Payroll, Pesonet Inward, Bills Payment Cheque",
+      "DownstreamPathTemplate": "/Etapi.container/api/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/Billspayment",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] SOA",
+      "DownstreamPathTemplate": "/EQBEtapi.container/api/v1.0.0/party/etapi/soa",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/SOA",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Customer Creation",
+      "DownstreamPathTemplate": "/EQBCusPdc.container/api/v1.0.0/party/createLosCustomers/customers/los",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/CustomerCreation",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
+      "_comment": "[e-TAPI Interface] Loan Creation",
+      "DownstreamPathTemplate": "/EQBLoan.container/api/v1.0.0/party/products/",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.83",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/ETAPI/LoanCreation",
+      "UpstreamHttpMethod": [ "POST" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+
+
+
+
+
+
+
+
+
+
+
+
+
+    {
       "DownstreamPathTemplate": "/api/BalanceInquiry/GetBalanceInquire",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
