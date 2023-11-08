@@ -36,6 +36,7 @@ namespace EQBAuth.API.Services
 
             return await Task.FromResult(new JwtSecurityTokenHandler().WriteToken(token));
         }
+
     }
 
     public interface IAuthService

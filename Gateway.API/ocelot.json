@@ -4,6 +4,27 @@
   },
   "Routes": [
     {
+      "_comment": "Generation of Token",
+      "DownstreamPathTemplate": "/api/Auth/GenerateToken",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "localhost",
+          "Port": 18925
+        }
+      ],
+
+      "UpstreamPathTemplate": "/Gateway/GenerateToken",
+      "UpstreamHttpMethod": [ "POST", "GET" ],
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
+    {
       "_comment": "[InstaPay Interface] Instapay Transaction",
       "DownstreamPathTemplate": "/Instapay.container/api/v1.0.0/party/createIpFundsTransfer/payments/instapays",
       "DownstreamScheme": "http",
@@ -471,7 +492,31 @@
 
 
 
-
+    {
+      "_comment": "[e-TAPI Interface] Loan Creation",
+      "DownstreamPathTemplate": "/EtapiEnq.container/api/v1.0.0/party/etapi/act/bal/{param1} ",
+      "DownstreamScheme": "http",
+      "DownstreamHostAndPorts": [
+        {
+          "Host": "10.21.0.100",
+          "Port": 9189
+        }
+      ],
+      "AuthenticationOptions": {
+        "AuthenticationProviderKey": "Bearer",
+        "AllowedScopes": []
+      },
+      "UpstreamPathTemplate": "/BalanceInquiry/",
+      "UpstreamHttpMethod": [ "POST" ],
+      "DownstreamHttpMethod": "GET",
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "2s",
+        "PeriodTimespan": 1,
+        "Limit": 1
+      }
+    },
     {
       "DownstreamPathTemplate": "/api/BalanceInquiry/GetBalanceInquire",
       "DownstreamScheme": "http",
@@ -485,7 +530,8 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       },
-      "UpstreamPathTemplate": "/gateway/BalanceInquiry/GetBalanceInquire",
+      "UpstreamPathTemplate": "/Gateway/BalanceInquiry/GetBalanceInquire",
+      "LoadBalancer": "RoundRobin",
       "UpstreamHttpMethod": [ "GET" ],
       "RateLimitOptions": {
         "ClientWhitelist": [],
@@ -508,7 +554,8 @@
         "AuthenticationProviderKey": "Bearer",
         "AllowedScopes": []
       },
-      "UpstreamPathTemplate": "/gateway/BalanceInquiry/BalanceInquire",
+      "UpstreamPathTemplate": "/Gateway/BalanceInquiry/BalanceInquire",
+      "LoadBalancer": "RoundRobin",
       "UpstreamHttpMethod": [ "POST" ]
     },
     {
@@ -520,7 +567,8 @@
           "Port": 9189
         }
       ],
-      "UpstreamPathTemplate": "/gateway/v1.0.0/party/etapi/act/bal/{id}",
+      "UpstreamPathTemplate": "/Gateway/v1.0.0/party/etapi/act/bal/{id}",
+      "LoadBalancer": "RoundRobin",
       "UpstreamHttpMethod": [ "GET" ]
     },
     {
@@ -532,7 +580,8 @@
           "Port": 9189
         }
       ],
-      "UpstreamPathTemplate": "/gateway/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
+      "UpstreamPathTemplate": "/Gateway/v1.0.0/party/createEtBillpayFundsTransfer/payments/et/billpay",
+      "LoadBalancer": "RoundRobin",
       "UpstreamHttpMethod": [ "POST" ]
     }
   ]

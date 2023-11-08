@@ -1,8 +1,35 @@
-﻿using System.Text;
+﻿using Microsoft.AspNetCore.Http.Extensions;
+using Newtonsoft.Json;
+using System.Text;
 
 namespace Gateway.API
 {
-    public class RequestResponseLoggingMiddleware
+    
+    public class HeaderDelegatingHandler : DelegatingHandler
+    {
+        private readonly IHttpContextAccessor _httpContextAccessor;
+
+        public HeaderDelegatingHandler(IHttpContextAccessor httpContextAccessor)
+        {
+            _httpContextAccessor = httpContextAccessor;
+        }
+
+        //protected override async Task<HttpResponseMessage> SendAsync(HttpRequestMessage request, CancellationToken cancellationToken)
+        //{
+        //IEnumerable<string> headerValues;
+        //if (request.Headers.TryGetValues("Authorization", out headerValues))
+        //{
+        //    string accessToken = headerValues.First();
+
+        //    request.Headers.Authorization = new AuthenticationHeaderValue("Bearer", accessToken);
+        //    request.Headers.Remove("AccessToken");
+        //}
+
+        //return await base.SendAsync(request, cancellationToken);
+        //}
+
+    }
+    public class RequestResponseLoggingMiddleware 
     {
         private readonly ILogger<RequestResponseLoggingMiddleware> _logger;
         private readonly RequestDelegate _next;
@@ -88,5 +115,9 @@ namespace Gateway.API
             //Return the string for the response, including the status code (e.g. 200, 404, 401, etc.)
             return $"{response.StatusCode}: {text}";
         }
+    }
+    internal class GetParameters
+    {
+        public int param1 { get; set; }
     }
 }

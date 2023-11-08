@@ -23,21 +23,31 @@ namespace EQBAuth.API
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            //services.AddCors(options =>
+            //{
+            //    options.AddPolicy("CorsPolicy", builder =>
+            //        builder.AllowAnyOrigin()
+            //        .AllowAnyMethod()
+            //        .AllowAnyHeader()
+            //        .AllowCredentials()
+            //        .Build());
+            //});
+            var origins = Configuration["AllowedOrigins"].Split(";");
             services.AddCors(options =>
             {
                 options.AddPolicy("CorsPolicy", builder =>
-                    builder.AllowAnyOrigin()
-                    .AllowAnyMethod()
+                    builder.AllowAnyMethod()
                     .AllowAnyHeader()
                     .AllowCredentials()
+                    .WithOrigins(origins) 
                     .Build());
             });
-
+            services.AddMvc(option => option.EnableEndpointRouting = false);
             services.AddControllers();
             services.AddScoped<IAuthService, AuthService>(); 
            
             services.AddDistributedMemoryCache();
-
+            services.AddHealthChecks();
           
         }
 
@@ -53,7 +63,8 @@ namespace EQBAuth.API
 
             //app.UseSession();
             app.UseRouting();
-
+            app.UseCors("CorsPolicy");
+            app.UseMvc();
             app.UseAuthentication();
 
             app.UseAuthorization();
@@ -61,7 +72,7 @@ namespace EQBAuth.API
             {
                 endpoints.MapControllers();
             });
-
+            app.UseHealthChecks("/health");
  
         }
     }

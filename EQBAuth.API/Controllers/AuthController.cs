@@ -16,8 +16,16 @@ namespace EQBAuth.API.Controllers
         }
 
         [HttpPost("GenerateToken")]
-        public async Task<IActionResult> Login([FromBody] Models.Request.ReqAuth auth)
+        public async Task<IActionResult> GenerateToken([FromBody] Models.Request.ReqAuth auth)
         {
+            return Ok(await _authService.GenerateToken(auth));
+        }
+        [HttpGet("GenerateToken")]
+        public async Task<IActionResult> GenerateToken2()
+        {
+            Models.Request.ReqAuth auth = new Models.Request.ReqAuth();
+            auth.Username = "EQBAUTH";
+            auth.Password = "EQUICOMSAVINGSBANK@2023";
             return Ok(await _authService.GenerateToken(auth));
         }
     }
